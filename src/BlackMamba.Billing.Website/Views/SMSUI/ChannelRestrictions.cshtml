@@ -1,0 +1,63 @@
+﻿@model List<BlackMamba.Billing.Models.ChannelRestriction>
+
+@{
+    ViewBag.Title = ViewData["ServiceNumber"] + " - 通道限制配置";
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+}
+@section functions{
+
+    @if (ViewData["InstructionId"] == null)
+    {
+        <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/SMSServices/@ViewData["SPId"]','_self');">返回</button>
+        <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/ChannelRestrictionAdd?channelId=@ViewData["ChannelId"]','_self');">添加通道限制</button>
+        
+    }
+    else
+    {
+        <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/Instructions?spId=@ViewData["SPId"]&serviceId=@ViewData["ServiceId"]','_self');">返回</button>
+        <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/ChannelRestrictionAdd?instructionId=@ViewData["InstructionId"]','_self');">添加通道限制</button>
+    }
+}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>限制类型
+            </th>
+            <th>限制省份
+            </th>
+            <th>限制城市
+            </th>
+            <th>限制运营商
+            </th>
+            <th>最大限制次数
+            </th>
+            <th>按时间段限制
+            </th>
+            <th width="100px">&nbsp;</th>
+            <th width="100px">&nbsp;</th>
+            <th width="100px">&nbsp;</th>
+            <th width="100px">&nbsp;</th>
+
+        </tr>
+    </thead>
+    <tbody class="prolist">
+        @foreach (var item in Model)
+        {
+            <tr class="odd gradeX">
+                <td>@item.Type.ToString()</td>
+                <td>@BlackMamba.Billing.Website.ChinaRegionInfo.ProvincesDict[item.ProvinceId.GetValueOrDefault()]</td>
+                <td>@BlackMamba.Billing.Website.ChinaRegionInfo.CitiesDict[item.CityId.GetValueOrDefault()]</td>
+                <td>@BlackMamba.Billing.Website.ChinaRegionInfo.Operations[(int)item.Operator]</td>
+                <td>@item.MaxTimes</td>
+                <td>@item.TimeSpan.ToString()</td>
+                <td class="center">
+                    <button class="btn btn-large btn-gray" onclick="var c=confirm('确定要删除?'); if(c==true){window.open('/SMSUI/ChannelRestrictionDelete?id=@item.Id&instructionId=@ViewData["InstructionId"]','_self');}">
+                        删 除</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

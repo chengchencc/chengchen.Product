@@ -1,0 +1,75 @@
+﻿@model BlackMamba.Billing.Models.SMSChannelSetting
+
+@{
+    ViewBag.Title = "添加通道设置";
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+
+    <fieldset class="content-fieldset">
+        <legend>通道设置</legend>
+
+        <div class="editor-label">
+            指令（留空表示这个通过所有指令都使用同样配置）
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.InstructionId, new { Readonly="readonly"})
+        </div>
+
+        <div class="editor-label">
+            请求充值信息模板
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ChargeMessageTemplate)
+        </div>
+
+         <div class="editor-label">
+            请求充值信息正则表达式
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ChargeMessageRegex)
+        </div>
+
+         <div class="editor-label">
+            二次确认信息内容
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ConfirmMessage)
+        </div>
+
+         <div class="editor-label">
+            二次确认信息模板
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ConfirmMessageTemplate)
+        </div>
+
+         <div class="editor-label">
+            二次确认来自的短信中心号
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ConfirmNoRegex)
+        </div>
+
+
+          <div class="editor-label">
+            最终订购成功确认信息
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.FinalConfirmMessage)
+        </div>
+
+          <div class="editor-label">
+            最终确认来自的短信中心号
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.FinalConfirmNoRegex)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+

@@ -1,0 +1,90 @@
+﻿@model SubSonic.Oracle.Schema.PagedList<BlackMamba.Billing.Models.SMS.ShortMessageService>
+
+@{
+    ViewBag.Title = "通道管理";
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+}
+@section functions{
+                   <button class="btn btn-large btn-gray" onclick="window.open('/SMSUI/ServiceProviderManage','_self');">返回到SP</button>
+                   <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/ServiceAdd?spId=@ViewData["SPID"]','_self');">添加通道</button>
+            }
+
+    <div style="padding: 5px;">
+        @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    名称
+                </th>  
+                <th>
+                    特服号
+                </th>                
+                <th>
+                    通道类型
+                </th>
+                <th>
+                    是否手动维护
+                </th>
+                <th>
+                    覆盖运营商
+                </th>
+                <th>
+                    创建时间
+                </th>
+                 <th width="100px">&nbsp;</th>
+                 <th width="100px">&nbsp;</th>
+                 <th width="100px">&nbsp;</th>                      
+                 <th width="100px">&nbsp;</th>
+                 <th width="100px">&nbsp;</th>
+
+            </tr>
+        </thead>
+        <tbody class="prolist">
+            @foreach (var item in Model)
+            {
+                <tr class="odd gradeX">
+                    <td>@item.Name</td>
+                    <td>@item.ServiceNumber</td>
+                    <td>@item.Type.ToString()</td>
+                    <td>@item.IsManully</td>
+                    <td>
+                        @if (item.IsMobile)
+                        {
+                            <span>移动</span> 
+                        }
+                        
+                        @if (item.IsTelcom)
+                        {
+                            <span>电信</span> 
+                        }
+
+                        @if (item.IsUnicom)
+                        {
+                            <span>联通</span> 
+                        }
+                       </td>
+                    <td>@item.CreatedDate</td>
+                      <td class="center">
+                          <button class="btn btn-large btn-gray" onclick="window.open('/SMSUI/ServiceUpdate?id=@item.Id','_self');">
+                              更新</button>
+                      </td>
+                      <td class="center">
+                          <button class="btn btn-large btn-gray" onclick="var c=confirm('确定要删除?'); if(c==true){window.open('/SMSUI/ServiceDelete?id=@item.Id&spId=@ViewData["SPID"]','_self');}">
+                              删 除</button>
+                      </td>
+                      <td class="center"><button type="button" class="btn btn-large btn-blue"  onclick="window.open('/SMSUI/Instructions?spId=@ViewData["SPID"]&serviceId=@item.Id','_self');">配置指令</button></td>
+                    <td class="center">
+                        <button type="button" class="btn btn-large btn-blue"  onclick="window.open('/SMSUI/ChannelSettings?spId=@item.SpId&serviceId=@item.Id','_self');">通道配置</button>
+                    </td>
+                    <td class="center">
+                        <button type="button" class="btn btn-large btn-blue"  onclick="window.open('/SMSUI/channelRestrictions?spId=@item.SpId&serviceId=@item.Id','_self');">使用限制</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="padding: 5px;">
+        @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+    </div>

@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_payCenterLayout.cshtml";
+}
+<div class="contentHeader" title="@ViewBag.Title">
+    <div class="contentHeaderInfo">
+        <div>
+
+            @RenderSection("functions",false)
+            
+  @*<label>
+               <input name="textfield" type="text" class="textbox_style" id="textfield" placeholder="请输入订单号...""  value="@Request.QueryString["textfield"]" size="30"/>
+          <button class="btn btn-large btn-blue" onclick="var formPara = encodeURIComponent( $('#textfield').val().trim()) ;window.open('OrderSearchResult?textfield='+formPara+'&orderStatu=@statu&title=@ViewBag.Title' ,'_self');">搜索订单</button> 
+            </label>*@
+        </div>
+    </div>
+    <div class="apphead">
+        <div class="title">
+            <b>@ViewBag.Title</b>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    @RenderBody()
+</div>

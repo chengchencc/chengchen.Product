@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubSonic.Core.Oracle", "SubSonic.Core.Oracle.csproj", "{53FF90B2-2D33-4EC0-91B6-A30FDF1B3374}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubSonic.Core.Oracle.Test", "..\SubSonic.Core.Oracle.Test\SubSonic.Core.Oracle.Test.csproj", "{EF3403F3-0B48-4327-A708-3E0C873D02EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53FF90B2-2D33-4EC0-91B6-A30FDF1B3374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53FF90B2-2D33-4EC0-91B6-A30FDF1B3374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53FF90B2-2D33-4EC0-91B6-A30FDF1B3374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53FF90B2-2D33-4EC0-91B6-A30FDF1B3374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF3403F3-0B48-4327-A708-3E0C873D02EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3403F3-0B48-4327-A708-3E0C873D02EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3403F3-0B48-4327-A708-3E0C873D02EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3403F3-0B48-4327-A708-3E0C873D02EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

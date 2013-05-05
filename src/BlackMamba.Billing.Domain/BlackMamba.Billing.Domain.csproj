@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{540BF6BC-74B0-40EA-8582-A1A855F08EBA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BlackMamba.Billing.Domain</RootNamespace>
+    <AssemblyName>BlackMamba.Billing.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\common\billing.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\core\lib\AutoMapper\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="C5">
+      <HintPath>..\..\core\lib\quartz.net\C5.dll</HintPath>
+    </Reference>
+    <Reference Include="com.yeepay.icc">
+      <HintPath>..\..\core\lib\yeepay\com.yeepay.icc.dll</HintPath>
+    </Reference>
+    <Reference Include="com.yeepay.Model.SZXCallbackResult">
+      <HintPath>..\..\core\lib\yeepay\com.yeepay.Model.SZXCallbackResult.dll</HintPath>
+    </Reference>
+    <Reference Include="com.yeepay.model.SZXResult">
+      <HintPath>..\..\core\lib\yeepay\com.yeepay.model.SZXResult.dll</HintPath>
+    </Reference>
+    <Reference Include="com.yeepay.utils">
+      <HintPath>..\..\core\lib\yeepay\com.yeepay.utils.dll</HintPath>
+    </Reference>
+    <Reference Include="com.yeepay.utils.Digest">
+      <HintPath>..\..\core\lib\yeepay\com.yeepay.utils.Digest.dll</HintPath>
+    </Reference>
+    <Reference Include="com.yeepay.utils.HmacMD5">
+      <HintPath>..\..\core\lib\yeepay\com.yeepay.utils.HmacMD5.dll</HintPath>
+    </Reference>
+    <Reference Include="com.yeepay.utils.HttpUtils">
+      <HintPath>..\..\core\lib\yeepay\com.yeepay.utils.HttpUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="com.yeepay.utils.SZX">
+      <HintPath>..\..\core\lib\yeepay\com.yeepay.utils.SZX.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\..\core\lib\quartz.net\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\core\lib\NLog\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz">
+      <HintPath>..\..\core\lib\quartz.net\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\core\lib\RestSharp.102.7\lib\net35\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\..\core\lib\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionRepository.cs" />
+    <Compile Include="Common\ConfigKeys.cs" />
+    <Compile Include="Common\ConnectionStrings.cs" />
+    <Compile Include="Common\HeaderKeys.cs" />
+    <Compile Include="Common\MobileParam.cs" />
+    <Compile Include="DI\Bootstrapper.cs" />
+    <Compile Include="DI\ControllerRegistry.cs" />
+    <Compile Include="DI\StructureMapDependencyResolver.cs" />
+    <Compile Include="DI\StructureMapScope.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Helpers\Alipay\AlipayConfig.cs" />
+    <Compile Include="Helpers\Alipay\AlipayFunction.cs" />
+    <Compile Include="Helpers\Alipay\AlipayService.cs" />
+    <Compile Include="Helpers\Alipay\AlipaySubmit.cs" />
+    <Compile Include="Helpers\Alipay\RSA.cs" />
+    <Compile Include="Helpers\WebHelper.cs" />
+    <Compile Include="Interfaces\IPaymentsService.cs" />
+    <Compile Include="Interfaces\IPaymentsUIService.cs" />
+    <Compile Include="Mappers\PaymentCallbackNotificationMapping.cs" />
+    <Compile Include="Mappers\ConfigurationDataMapper.cs" />
+    <Compile Include="Mappers\EntityMapping.cs" />
+    <Compile Include="Mappers\SMSMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestRepository.cs" />
+    <Compile Include="Services\BillingCore\CardPaymentProcessor.cs" />
+    <Compile Include="Services\BillingCore\CardPaymentRetryJob.cs" />
+    <Compile Include="Services\BillingCore\CardPaymentRetryNotifyJob.cs" />
+    <Compile Include="Services\BillingCore\ICardPaymentProcessor.cs" />
+    <Compile Include="Services\BillingCore\LogHelper.cs" />
+    <Compile Include="Common\BillingConsts.cs" />
+    <Compile Include="Interfaces\IYeepayService.cs" />
+    <Compile Include="Services\Billing\PaymentsService.cs" />
+    <Compile Include="Services\Billing\PaymentsUIService.cs" />
+    <Compile Include="Services\Billing\YeepayFakeService.cs" />
+    <Compile Include="Services\Billing\YeepayService.cs" />
+    <Compile Include="Interfaces\IRESTfulClient.cs" />
+    <Compile Include="Services\RESTfulClient.cs" />
+    <Compile Include="Services\SMS\ISMSService.cs" />
+    <Compile Include="Services\SMS\ISMSUIService.cs" />
+    <Compile Include="Services\SMS\SMSService.cs" />
+    <Compile Include="Services\SMS\SMSUIService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="..\common\billing.snk">
+      <Link>billing.snk</Link>
+    </None>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\src\BlackMamba.Framework.Core\BlackMamba.Framework.Core.csproj">
+      <Project>{e015505c-dd08-472b-bb8f-ebe92ff420d1}</Project>
+      <Name>BlackMamba.Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\src\BlackMamba.Framework.RedisMapper\BlackMamba.Framework.RedisMapper.csproj">
+      <Project>{964f5b11-8db3-4ebc-8c82-dc79aafc9dae}</Project>
+      <Name>BlackMamba.Framework.RedisMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\src\BlackMamba.Framework.SubSonic.Oracle.Extension\BlackMamba.Framework.SubSonic.Oracle.Extension.csproj">
+      <Project>{ae6d64cb-e114-4843-a1a7-9184d98d0a74}</Project>
+      <Name>BlackMamba.Framework.SubSonic.Oracle.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\src\SubSonic.Core.Oracle\SubSonic.Core.Oracle.csproj">
+      <Project>{edecac79-55bc-4aa9-a08b-9fe143d825d0}</Project>
+      <Name>SubSonic.Core.Oracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlackMamba.Billing.Domain.ViewModels\BlackMamba.Billing.Domain.ViewModels.csproj">
+      <Project>{f8406e57-9bb5-4804-a248-3991b365b833}</Project>
+      <Name>BlackMamba.Billing.Domain.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlackMamba.Billing.Models\BlackMamba.Billing.Domain.Models.csproj">
+      <Project>{48a5e6ff-dfac-4d43-850d-1e2d934c2e34}</Project>
+      <Name>BlackMamba.Billing.Domain.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

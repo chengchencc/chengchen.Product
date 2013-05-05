@@ -1,0 +1,91 @@
+﻿@model List<BlackMamba.Billing.Models.Payments.OrderLine>
+@using BlackMamba.Billing.Website.Web;
+@{
+    //ViewBag.Title = "OrderLine";
+    Layout = "~/Views/Shared/_payCenterLayout.cshtml";
+}
+<div class="contentHeader" title="@ViewBag.Title">
+    <div class="contentHeaderInfo">
+        <button class="btn btn-quaternary btn-large addapp" onclick="history.back();">
+            返 回</button>
+    </div>
+    <div class="apphead">
+        <div class="title">
+            <b>@ViewBag.Title</b>
+        </div>
+    </div>
+</div>
+<div class="content">
+@*    <div style="padding: 5px;">
+        @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+    </div>*@
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    订单号
+                </th>
+@*                <th>
+                    商品名
+                </th>*@
+                <th>
+                    支付状态
+                </th>
+                <th>
+                    充值卡号
+                </th>
+                <th>
+                    充值卡状态
+                </th>
+                <th>
+                    成功金额
+                </th>
+                <th>
+                    其它信息
+                </th>
+                <th>
+                    交易时间
+                </th>
+@*                <th>
+                    &nbsp;
+                </th>
+*@            </tr>
+        </thead>
+        <tbody class="prolist">
+            @foreach (var item in Model)
+            {
+
+                var callbackKey = ((int)item.CardStatus).ToString();
+
+                var callbackText = BlackMamba.Billing.Models.Billing.CardPaymentDataDict.CardPaymentCallBackStatusDesc.ContainsKey(callbackKey) ? BlackMamba.Billing.Models.Billing.CardPaymentDataDict.CardPaymentCallBackStatusDesc[((int)item.CardStatus).ToString()] : item.CardStatus.ToString();
+
+                <tr id="@item.Id">
+                    <td>@item.OrderNo
+                    </td>
+@*                    <td>@item.ProductName
+                    </td>*@
+                    <td>@item.PaymentStatus
+                    </td>
+                    <td>@item.CardNo
+                    </td>
+                    <td>@callbackText
+                    </td>
+                    <td>@item.PaymentAmount
+                    </td>
+                    <td>
+                        单价：@item.Price<br/>
+                        数量：@item.Quantity<br/>
+                        折扣：@item.Discount<br/>
+                        总价是否调整：@item.IsTotalFeeAdjust<br/>
+                        是否使用优惠券：@item.UseCoupon<br/>
+                    </td>
+                    <td>@item.CreatedDate
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+@*    <div style="padding: 5px;">
+        @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+    </div>*@
+</div>

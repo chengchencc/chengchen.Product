@@ -1,0 +1,60 @@
+﻿@model BlackMamba.Billing.Models.SettingInRegion
+
+@{
+    ViewBag.Title = "添加通道区域限制";
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#ProvinceId").change(function () {
+            var selectedProvinceId = $(this).val();
+            window.open('/SMSUI/AddRegionRestriction?settingId=@Model.SettingId&provinceId=' + selectedProvinceId+'&instructionId=@ViewData["InstructionId"]', '_self');
+        });
+    });
+</script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset  class="content-fieldset">
+        <legend>SettingInRegion</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SettingId)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.SettingId, new {Readonly="readonly" })
+            @Html.ValidationMessageFor(model => model.SettingId)
+        </div>
+
+        <div class="editor-label">
+            省份限制
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ProvinceId, ViewData["Province"] as SelectList)
+            @Html.ValidationMessageFor(model => model.ProvinceId)
+        </div>
+
+        <div class="editor-label">
+            城市限制
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.CityId, ViewData["City"] as SelectList)
+            @Html.ValidationMessageFor(model => model.CityId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsBlackList)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsBlackList)
+            @Html.ValidationMessageFor(model => model.IsBlackList)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+

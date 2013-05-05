@@ -1,0 +1,114 @@
+﻿@model  SubSonic.Oracle.Schema.PagedList<BlackMamba.Billing.Models.Payments.Order>
+@using BlackMamba.Billing.Website.Web
+@{
+    //ViewBag.Title = "OrderManage";
+    Layout = "~/Views/Shared/_payCenterLayout.cshtml";
+
+    Dictionary<string, string> OrderStatusTextMapping = ViewData["OrderStatusTextMapping"] as Dictionary<string, string>;
+    var statu = ViewData["Statu"] == null || (int)ViewData["Statu"] == 404 ? 404 : (int)ViewData["Statu"];
+}
+
+<script>
+    $(function () {
+        var orderStat = @Request.QueryString["orderStatu"];
+        $("#OrderStatus").val(orderStat);
+    });
+</script>
+
+<div class="contentHeader" title="@ViewBag.Title">
+    <div class="contentHeaderInfo">
+        <div>
+            <label style="float: left;">
+                <input name="textfield" type="text" class="textbox_style" id="textfield" placeholder="请输入订单号..."  value='@Request.QueryString["textfield"]' size="30"/>
+                <button class="btn btn-large btn-blue" onclick="var formPara = encodeURIComponent( $('#textfield').val().trim()) ;window.open('OrderSearchResult?textfield='+formPara+'&orderStatu=@statu&title=@ViewBag.Title' ,'_self');">搜索订单</button>
+
+               
+            </label>
+            <label style="float: left; margin-left: 10px; margin-top: 2px;">
+                 <input name="UserId" type="text" class="textbox_style" id="UserId" placeholder="请输入用户编号" value='@Request.QueryString["uerId"]' size="30"/>
+                @Html.DropDownList("OrderStatus", (IEnumerable<SelectListItem>)ViewData["OrderStatus"], new { style = "border: 1px solid #e2e2e2; font-size: 1.2em; height: 44px;" })
+                <button class="btn btn-large btn-blue" onclick="var userId = $('#UserId').val().trim(); var orderStatus = $('#OrderStatus').val(); window.open('OrderSearchResult?userId='+userId+'&orderStatu=' + orderStatus + '&title=@ViewBag.Title' ,'_self');">搜索订单</button>
+            </label>
+        </div>
+    </div>
+    <div class="apphead">
+        <div class="title">
+            <b>@ViewBag.Title</b>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div style="padding: 5px;">
+        @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>订单号
+                </th>
+                <th>商品名
+                </th>
+                <th>用户编号</th>
+                <th>支付方式</th>
+                <th>金额(元)
+                </th>
+                <th>已付金额(元)
+                </th>
+                <th>订单状态
+                </th>
+                <th>请求状态
+                </th>
+                <th>回调状态
+                </th>
+                <th>成交时间
+                </th>
+                <th>卡号</th>
+                <th>密码</th>
+                <th>面额</th>
+                <th>有效</th>
+            </tr>
+        </thead>
+        <tbody class="prolist">
+            @for (int appIndex = 0; appIndex < Model.Count; appIndex++)
+            {
+                string orderState = Model[appIndex].Status.ToString() == "1" ? "已支付" : "等待买家付款";
+                var requestKey = (int)Model[appIndex].CardPaymentRequestStatus;
+                var callbackKey = (int)Model[appIndex].CardPaymentCallBackStatus;
+                var requestText = BlackMamba.Billing.Models.Billing.CardPaymentDataDict.CardPaymentRequestStatusDesc.ContainsKey(requestKey.ToString()) ? BlackMamba.Billing.Models.Billing.CardPaymentDataDict.CardPaymentRequestStatusDesc[requestKey.ToString()] : Model[appIndex].CardPaymentRequestStatus.ToString();
+                var callbackText = BlackMamba.Billing.Models.Billing.CardPaymentDataDict.CardPaymentCallBackStatusDesc.ContainsKey(callbackKey.ToString()) ? BlackMamba.Billing.Models.Billing.CardPaymentDataDict.CardPaymentCallBackStatusDesc[callbackKey.ToString()] : Model[appIndex].CardPaymentCallBackStatus.ToString();
+                <tr class="odd gradeX">
+                    <td class="center">
+         
+                            <div class="checkorderline" style="text-decoration: underline;cursor: pointer;" onclick="window.open('GetOrderLine?orderNo=@Model[appIndex].OrderNo' ,'_self');">@Model[appIndex].OrderNo
+                            </div>
+         
+                    </td>
+                    <td>@Model[appIndex].ProductName
+                    </td>
+                    <td>@Model[appIndex].UserId</td>
+                    <td>@Model[appIndex].PaymentType.ToString()</td>
+                    <td>
+                        <strong>@Model[appIndex].Amount</strong>
+                    </td>
+                    <td>@Model[appIndex].PayedAmount
+                    </td>
+                    <td>@(OrderStatusTextMapping.ContainsKey(Model[appIndex].OrderStatus.ToString()) ? OrderStatusTextMapping[Model[appIndex].OrderStatus.ToString()] : "None")
+                    </td>
+                    <td>@requestText
+                    </td>
+                    <td>@callbackText
+                    </td>
+                    <td>@Model[appIndex].CreatedDate
+                    </td>
+                    <td>@Model[appIndex].CardNo</td>
+                    <td>@Model[appIndex].CardPassword</td>
+                    <td>@Model[appIndex].CardAmount</td>
+                    <td>@Model[appIndex].Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="padding: 5px;">
+        @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+    </div>
+</div>

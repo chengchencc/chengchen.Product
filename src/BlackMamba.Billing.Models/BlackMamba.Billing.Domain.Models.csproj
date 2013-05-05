@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{48A5E6FF-DFAC-4D43-850D-1E2D934C2E34}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BlackMamba.Billing.Models</RootNamespace>
+    <AssemblyName>BlackMamba.Billing.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\common\billing.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\core\lib\Newtonsoft.Json.4.5.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Billing\CardPayment.cs" />
+    <Compile Include="Billing\CardPaymentCallbackResult.cs" />
+    <Compile Include="Billing\CardPaymentDataDict.cs" />
+    <Compile Include="Billing\PaymentNotification.cs" />
+    <Compile Include="Billing\SDKCallbackResult.cs" />
+    <Compile Include="Payments\PaymentType.cs" />
+    <Compile Include="SMS\City.cs" />
+    <Compile Include="SMS\Provincy.cs" />
+    <Compile Include="SMS\MobileInfo.cs" />
+    <Compile Include="SMS\SMSPay\Partner.cs" />
+    <Compile Include="SMS\SMSPay\SettingInRegion.cs" />
+    <Compile Include="SMS\SMSPay\SMSChannelSetting.cs" />
+    <Compile Include="SMS\Base\ServiceType.cs" />
+    <Compile Include="SMS\GameBasePay\GameBaseChannelLog.cs" />
+    <Compile Include="SMS\GameBasePay\GameBaseChannel.cs" />
+    <Compile Include="SMS\SMSPay\SMSChannelLog.cs" />
+    <Compile Include="SMS\SMSPay\SMSChannel.cs" />
+    <Compile Include="SMS\GameBasePay\GameBaseService.cs" />
+    <Compile Include="SMS\Base\ServiceBase.cs" />
+    <Compile Include="SMS\SMSPay\Instruction.cs" />
+    <Compile Include="SMS\Base\ChannelBase.cs" />
+    <Compile Include="SMS\Base\ChannelLogBase.cs" />
+    <Compile Include="SMS\SMSPay\SMSLog.cs" />
+    <Compile Include="SMS\Base\ServiceProvider.cs" />
+    <Compile Include="SMS\SMSPay\ShortMessageService.cs" />
+    <Compile Include="RedisModelBase.cs" />
+    <Compile Include="Payments\CallbackNotifyDetails.cs" />
+    <Compile Include="Payments\CardPaymentCallBackStatus.cs" />
+    <Compile Include="Payments\CardPaymentInfoForRetry.cs" />
+    <Compile Include="Payments\CardPaymentRequestStatus.cs" />
+    <Compile Include="Payments\CustomerOrder.cs" />
+    <Compile Include="Payments\FinancialAccount.cs" />
+    <Compile Include="Payments\Order.cs" />
+    <Compile Include="Payments\OrderLine.cs" />
+    <Compile Include="Payments\OrderStatus.cs" />
+    <Compile Include="Payments\PaymentStatus.cs" />
+    <Compile Include="Payments\ReissueOrderStatus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SMS\IMSIInfo.cs" />
+    <Compile Include="SMS\RestrictionSetting\ChannelRestriction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\src\BlackMamba.Framework.Core\BlackMamba.Framework.Core.csproj">
+      <Project>{e015505c-dd08-472b-bb8f-ebe92ff420d1}</Project>
+      <Name>BlackMamba.Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\src\BlackMamba.Framework.RedisMapper\BlackMamba.Framework.RedisMapper.csproj">
+      <Project>{964f5b11-8db3-4ebc-8c82-dc79aafc9dae}</Project>
+      <Name>BlackMamba.Framework.RedisMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\src\BlackMamba.Framework.SubSonic.Oracle.Extension\BlackMamba.Framework.SubSonic.Oracle.Extension.csproj">
+      <Project>{ae6d64cb-e114-4843-a1a7-9184d98d0a74}</Project>
+      <Name>BlackMamba.Framework.SubSonic.Oracle.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\src\SubSonic.Core.Oracle\SubSonic.Core.Oracle.csproj">
+      <Project>{edecac79-55bc-4aa9-a08b-9fe143d825d0}</Project>
+      <Name>SubSonic.Core.Oracle</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\common\billing.snk">
+      <Link>billing.snk</Link>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

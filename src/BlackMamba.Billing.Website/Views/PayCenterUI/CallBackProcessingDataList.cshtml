@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "回调处理中订单";
+    Layout = "~/Views/Shared/_payCenterLayout.cshtml";
+}
+@model SubSonic.Oracle.Schema.PagedList<BlackMamba.Billing.Models.PaymentNotification>
+<div class="contentHeader" title="@ViewBag.Title">
+    <div class="contentHeaderInfo">
+    <button class="btn btn-quaternary btn-large addapp" onclick="history.back();">
+            返 回</button>
+     <input name="textfield" type="text" class="textbox_style" id="textfield" placeholder="请输入订单号...""  value="@ViewData["searchKey"]" size="30"/>
+          <button class="btn btn-large btn-blue" onclick="var formPara = encodeURIComponent( $('#textfield').val().trim()) ;window.open('CallBackProcessingDataList?orderNo='+formPara ,'_self');">搜索订单</button>         
+            </div>
+    <div class="apphead">
+        <div class="title">
+            <b>@ViewBag.Title</b>
+        </div>
+    </div>
+</div>
+<div class="content">
+  <div style="padding: 5px;">
+            @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+        </div>
+  <table class="table table-striped">
+   <thead>
+       <tr>
+           <th>订单号</th>
+           <th>支付状态编号</th>
+           <th>请求支付金额</th>
+           <th>成功支付金额</th>
+           <th>支付状态描述</th>
+           <th>回调地址</th>
+           <th>最后一次请求时间</th>
+       </tr>
+   </thead>
+   <tbody>
+       @foreach (var item in Model)
+       { 
+           <tr>
+               <td>@item.OrderNo</td>
+               <td>@item.ResultCode</td>
+               <td>@item.RequestAmount</td>
+               <td>@item.SuccessAmount</td>
+               <td>@item.Description</td>
+               <td>@item.CallbackURL</td>
+               <td>@(item.LastRequestDate > new DateTime(1990,1,1) ? item.LastRequestDate.ToString() : "")</td>
+           </tr>
+       }
+   </tbody>
+  </table> 
+    <div style="padding: 5px;">
+            @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+        </div>
+</div>

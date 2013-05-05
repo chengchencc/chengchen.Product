@@ -1,0 +1,66 @@
+﻿@model BlackMamba.Billing.Models.SMS.ShortMessageService
+
+@{
+    ViewBag.Title = "添加通道服务";
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset class="content-fieldset">
+        <legend>通道服务</legend>
+
+        <div class="editor-label">
+            名称
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            是否手动维护
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsManully)
+            @Html.ValidationMessageFor(model => model.IsManully)
+        </div>
+
+        <div class="editor-label">
+            特服号
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ServiceNumber)
+            @Html.ValidationMessageFor(model => model.ServiceNumber)
+        </div>
+
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.SpId)
+            @Html.ValidationMessageFor(model => model.SpId)
+        </div>
+
+        <div class="editor-label">
+            通道类型
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model=>model.Type,(SelectList)ViewData["ServiceType"])
+            @Html.ValidationMessageFor(model => model.Type)
+        </div>
+
+       
+        <div class="editor-label">
+            选择运营商
+        </div>
+        <div class="editor-field">
+            移动 @Html.EditorFor(model => model.IsMobile) 
+            联通 @Html.EditorFor(model => model.IsUnicom)
+            电信 @Html.EditorFor(model => model.IsTelcom)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+

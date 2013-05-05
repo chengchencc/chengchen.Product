@@ -1,0 +1,70 @@
+﻿@model List<BlackMamba.Billing.Models.SMSChannelSetting>
+
+@{
+    ViewBag.Title = ViewData["ServiceNumber"] + " - 通道配置一览";
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+}
+@section functions{
+    @if (ViewData["InstructionId"] == null)
+    {
+        
+        <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/SMSServices/@ViewData["SPId"]','_self');">返回</button>
+        <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/ChannelSettingAdd?channelId=@ViewData["ChannelId"]','_self');">添加通道配置</button>
+    }
+    else
+    {
+        <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/Instructions?spId=@ViewData["SPId"]&serviceId=@ViewData["ServiceId"]','_self');">返回</button>
+        <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/ChannelSettingAdd?instructionId=@ViewData["InstructionId"]','_self');">添加通道配置</button>    
+    }
+}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>请求充值信息模板
+            </th>
+            <th>请求充值信息正则表达式
+            </th>
+
+            <th>二次确认信息内容
+            </th>
+
+            <th>二次确认信息模板
+            </th>
+            <th>二次确认来自的短信中心号
+            </th>   
+            <th>最终订购成功确认信息
+            </th>
+             <th>最终确认来自的短信中心号
+            </th>
+            <th width="100px">&nbsp;</th>
+            <th width="100px">&nbsp;</th>
+
+
+        </tr>
+    </thead>
+    <tbody class="prolist">
+        @foreach (var item in Model)
+        {
+            <tr class="odd gradeX">
+                <td>@item.ChargeMessageTemplate</td>
+                <td>@item.ChargeMessageRegex</td>
+                <td>@item.ConfirmMessage</td>
+                <td>@item.ConfirmMessageTemplate</td>
+                <td>@item.ConfirmNoRegex</td>
+                <td>@item.FinalConfirmMessage</td>
+                <td>@item.FinalConfirmNoRegex</td>
+                <td class="center">
+                    <button class="btn btn-large btn-gray" onclick="var c=confirm('确定要删除?'); if(c==true){window.open('/SMSUI/ChannelSettingDelete?id=@item.Id&instructionId=@ViewData["InstructionId"]','_self');}">
+                        删 除</button>
+                </td>
+                <td class="center">
+                    <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/RegionRestriction?settingId=@item.Id&spId=@ViewData["SPId"]&serviceId=@ViewData["ServiceId"]&instructionId=@ViewData["InstructionId"]','_self');">区域限制</button>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+

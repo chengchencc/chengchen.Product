@@ -1,0 +1,78 @@
+﻿@model BlackMamba.Billing.Models.ChannelRestriction
+
+@{
+    ViewBag.Title = "配置通道限制";
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#ProvinceId").change(function () {
+            var selectedProvinceId = $(this).val();
+            window.open('/SMSUI/ChannelRestrictionAdd?channelId=@Model.ChannelId&provinceId=' + selectedProvinceId+'&instructionId=@ViewData["InstructionId"]', '_self');
+        });
+    });
+</script>
+
+@using (Html.BeginForm()) {
+
+    <fieldset class="content-fieldset">
+        <legend>配置通道限制</legend>
+
+        <div class="editor-label">
+            指令（留空表示这个通过所有指令都使用同样配置）
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.InstructionId, new { Readonly="readonly"})
+        </div>
+
+        <div class="editor-label">
+            限制类型
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Type, ViewData["RestrictionType"] as SelectList)
+        </div>
+
+        <div class="editor-label">
+            省份限制
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ProvinceId, ViewData["Province"] as SelectList)
+        </div>
+
+        <div class="editor-label">
+            城市限制
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.CityId, ViewData["City"] as SelectList)
+        </div>
+
+        <div class="editor-label">
+            运营商限制
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Operator, ViewData["Operator"] as SelectList)
+        </div>
+
+         <div class="editor-label">
+            限制次数
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.MaxTimes)
+        </div>
+
+         <div class="editor-label">
+            限制时间段
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.TimeSpan, ViewData["TimeSpan"] as SelectList)
+        </div>
+
+        
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+

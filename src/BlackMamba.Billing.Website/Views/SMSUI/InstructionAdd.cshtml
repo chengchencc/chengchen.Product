@@ -1,0 +1,37 @@
+﻿@model BlackMamba.Billing.Models.SMS.Instruction
+
+@{
+    ViewBag.Title = "InstructionAdd";
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset class="content-fieldset">
+        <legend>Instruction</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ServiceId)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ServiceId, new { Readonly="readonly"})
+            @Html.ValidationMessageFor(model => model.ServiceId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Code)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Code)
+            @Html.ValidationMessageFor(model => model.Code)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

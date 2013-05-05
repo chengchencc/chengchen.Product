@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/login-box.css" rel="stylesheet"/>
+</head>
+<body>
+    <form method="post" runat="server" autocomplete="on">
+        <div style="padding: 100px 0 0 250px;">
+            <div id="login-box">
+                <h2>Login</h2>
+                晓封网络支付管理系统
+        <br />
+                <br />
+                <div class="login-box-name">用户名:</div>
+                <div class="login-box-field">
+                    <input type="text" name="UserName" id="UserName" class="editField" />
+                </div>
+                <div class="login-box-name">密 码:</div>
+                <div class="login-box-field">
+                    <input type="password" name="Password" id="Password" class="editField" autocomplete="on"/>
+                </div>
+                <br />
+                <br />
+                <input type="submit" id="login" value="" />
+
+            </div>
+        </div>
+    </form>
+</body>
+</html>

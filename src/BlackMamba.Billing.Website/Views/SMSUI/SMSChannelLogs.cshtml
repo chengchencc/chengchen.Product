@@ -1,0 +1,128 @@
+﻿@model  SubSonic.Oracle.Schema.PagedList<BlackMamba.Billing.Models.SMS.SMSChannelLog>
+@using BlackMamba.Billing.Domain.ViewModels.SMS;
+@{
+    ViewBag.Title = "短代充值日志";
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+}
+
+@section functions{
+    <label>
+        <input name="textfield" type="text" class="textbox_style" id="textfield" placeholder="请输入手机号码..."  value="@Request.QueryString["textfield"]" style="width: 193px"/>
+       
+        <span>开始日期：</span><input id="startDate" type="datetime" style="width: 193px"/> 
+        <span>结束日期：</span><input id="endDate" type="datetime" style="width: 193px"/>
+        
+        <button class="btn btn-large btn-blue" onclick="var formPara = encodeURIComponent( $('#textfield').val().trim()); var textStartDate = $('#startDate').val(); var textEndDate = $('#endDate').val(); window.open('SearchSMSChannelLogs?mobile='+formPara + '&startDate=' + textStartDate + '&endDate=' + textEndDate, '_self');">搜索日志</button>
+    </label>
+ } 
+
+<script type="text/javascript">
+    $(function () {
+        $("#startDate").datepicker();
+        $("#endDate").datepicker();
+    });
+</script>
+
+    <div style="padding: 5px;">
+        @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ServiceNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InstructionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Instruction)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IMSI)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ChargeStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProvinceId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CityId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OpId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ChannelId)
+                </th>
+                <th>
+                    创建时间
+                </th>
+                <th>
+                    更新时间
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstructionId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Instruction)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mobile)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IMSI)
+                    </td>
+                    <td>
+                        @(((BlackMamba.Billing.Models.SMS.SMSChargeStatus)(int)item.ChargeStatus).ToString())
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProvinceId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CityId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OpId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ChannelId)
+                    </td>
+                    <td>
+                        @item.CreatedDate
+                    </td>
+                    <td>
+                        @item.LastModifiedDate
+                    </td>
+                    <td class="center">
+                        <button type="button" class="btn btn-large btn-gray"  onclick="window.open('SMSLogs/@item.ID','_self');">信息详情</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+<div style="padding: 5px;">
+    @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+</div>

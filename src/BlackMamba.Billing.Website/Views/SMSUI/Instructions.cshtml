@@ -1,0 +1,61 @@
+﻿@model SubSonic.Oracle.Schema.PagedList<BlackMamba.Billing.Models.SMS.Instruction>
+
+@{
+    ViewBag.Title = "Instructions";
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+}
+@section functions{
+    <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/SMSServices?id=@ViewData["SPID"]','_self');">返回到上一层</button>
+    <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/InstructionAdd?serviceId=@ViewData["ServiceId"]','_self');">添加指令</button>
+}
+
+<div style="padding: 5px;">
+    @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>指令
+            </th>
+            <th>创建时间
+            </th>
+            <th width="100px">&nbsp;</th>
+            <th width="100px">&nbsp;</th>
+            <th width="100px">&nbsp;</th>
+
+        </tr>
+    </thead>
+    <tbody class="prolist">
+        @foreach (var item in Model)
+        {
+            <tr class="odd gradeX">
+                <td>@item.Code</td>
+                <td>@item.CreatedDate</td>
+
+                @*<td class="center">
+                          <button class="btn btn-large btn-gray" onclick="window.open('SPEdit/@item.Id','_self');">
+                              修 改</button>
+                      </td>*@
+                <td class="center">
+                    <button class="btn btn-large btn-gray" onclick="var c=confirm('确定要删除?'); if(c==true){window.open('/SMSUI/InstructionDelete?id=@item.Id&serviceId=@ViewData["ServiceId"]','_self');}">
+                        删 除</button>
+                </td>
+
+                <td class="center">
+                    <button type="button" class="btn btn-large btn-blue"  onclick="window.open('/SMSUI/ChannelSettings?instructionId=@item.Id&serviceId=@item.ServiceId','_self');">通道配置</button>
+                </td>
+                <td class="center">
+                    <button type="button" class="btn btn-large btn-blue"  onclick="window.open('/SMSUI/channelRestrictions?instructionId=@item.Id&serviceId=@item.ServiceId','_self');">使用限制</button>
+                </td>
+
+
+                @*
+                      <td class="center"><button type="button" class="btn btn-large btn-gray"  onclick="window.open('SPDetail/@item.Id','_self');">详 情</button></td>*@
+
+            </tr>
+        }
+    </tbody>
+</table>
+<div style="padding: 5px;">
+    @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+</div>

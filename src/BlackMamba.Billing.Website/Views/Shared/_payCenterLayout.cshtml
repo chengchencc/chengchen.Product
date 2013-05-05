@@ -1,0 +1,89 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.title</title>
+    <link href="../../Content/main.css" rel="stylesheet" type="text/css" />
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+
+    @RenderSection("Header", false)
+    @*<script src="@Url.Content("~/Scripts/Picasa/Picasa.js")" type="text/javascript"></script>*@
+</head>
+<body>
+    <script type="text/javascript">
+        $(function () {
+            $('[highlight="true"]').click(function () {
+                $('[highlight="true"]').removeAttr("class");
+                $(this).attr("class", "focus");
+            });
+
+            var $menus = $(".main .left ul");
+            if ($menus && $menus.length > 0) {
+                $menu = $($menus[0]);
+                $menuItems = $menu.find("li");
+                var currentMenuItemIndex = 0;
+
+                var $ContentHeader = $(".contentHeader");
+                if ($ContentHeader.length) {
+                    var title = $($ContentHeader[0]).attr("title");
+
+                    if ($menuItems && $menuItems.length > 0) {
+                        for (var i = 0, len = $menuItems.length; i < len; i++) {
+                            if ($($menuItems[i]).text() == title) {
+                                currentMenuItemIndex = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                $($menuItems[currentMenuItemIndex]).find("a").addClass("focus");
+            }
+        });
+    </script>
+    <div class="top">
+        <img src="../../Content/images/logo_Pay.png" alt="支付中心" />
+        <div style="float: right; line-height: 50px;">
+            <span style="float: left; display: block; padding-right: 15px;">@*<u>@userName</u>*@
+            </span><a href="/Account/LogOff" class="logout" title="退出登录"></a>
+        </div>
+    </div>
+    @if (!BlackMamba.Framework.Core.ProjectConfigHelper.IsInLiveMode())
+    {
+        <div class="testBanner">
+            测试环境</div>
+    }
+    <div class="main">
+        <div class="left">
+            <ul>
+                <li><span class="ico icon-layers"></span>@Html.ActionLink("订单查询", "OrderManage", "PayCenterUI", null, new { highlight = "true" })</li>
+                <li><span class="ico icon-layers"></span>@Html.ActionLink("回调处理中订单", "CallBackProcessingDataList", "PayCenterUI", null, new { highlight = "true" })</li>
+                @*<li><span class="ico icon-layers"></span>@Html.ActionLink("处理完毕订单", "ProcessedOrder", "PayCenterUI", null, new { highlight = "true" })</li>
+                <li><span class="ico icon-layers"></span>@Html.ActionLink("失败订单", "FailureOrder", "PayCenterUI", null, new { highlight = "true" })</li>
+                <li><span class="ico icon-layers"></span>@Html.ActionLink("可重试订单", "RetryOrder", "PayCenterUI", null, new { highlight = "true" })</li>
+                <li><span class="ico icon-layers"></span>@Html.ActionLink("请求中订单", "ProcessingOrder", "PayCenterUI", null, new { highlight = "true" })</li>
+      *@          <li><span class="ico icon-layers"></span>@Html.ActionLink("充值通道", "ServiceProviderManage", "SMSUI", null, new { highlight = "true" })</li>
+                <li><span class="ico icon-layers"></span>@Html.ActionLink("短代充值日志", "SMSChannelLogs", "SMSUI", null, new { highlight = "true" })</li>
+            </ul>
+        </div>
+        <div class="right">
+            <div id="errorInfo" class="error">
+                @if (TempData["errorMsg"] != null)
+                {
+                    @Html.Raw(TempData["errorMsg"].ToString())
+                }
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+    <div class="bottom">
+        @BlackMamba.Framework.Core.CompanyInfo.COMPANY_NAME 版权所有 © @BlackMamba.Framework.Core.CompanyInfo.COPY_RIGHT | <a href="http://www.miitbeian.gov.cn" target="_blank">@BlackMamba.Framework.Core.CompanyInfo.ICP</a></div>
+</body>
+</html>

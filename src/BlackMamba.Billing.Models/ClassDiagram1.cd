@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BlackMamba.Billing.Models.CardPayment" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAhAQAAAAAAAAgAAAAACDAAgAAhADAAAAAAAIAAI=</HashCode>
+      <FileName>Billing\CardPayment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.PaymentNotification" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAkAAAAAAAAAAQAAAAAAAAAAAAAAAEgAAI=</HashCode>
+      <FileName>Billing\PaymentNotification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.LogBase">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LogBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.RedisModelBase" Collapsed="true">
+    <Position X="13.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAEAAAAAAAAAAAAQAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>RedisModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.681" />
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.ChannelBase">
+    <Position X="6.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SMS\ChannelBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.ChannelLogBase">
+    <Position X="4.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIACAAAQAAAAAAAA=</HashCode>
+      <FileName>SMS\ChannelLogBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.GameBaseChannel">
+    <Position X="5.25" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAACAgAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SMS\GameBaseChannel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.GameBaseChannelLog">
+    <Position X="3" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAIAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>SMS\GameBaseChannelLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.GameBaseService">
+    <Position X="3" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>SMS\GameBaseService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.IMSIInfo" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAIACAAAAAAAAAAAA=</HashCode>
+      <FileName>SMS\IMSIInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.Instruction">
+    <Position X="0.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SMS\Instruction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.RestrictionBase">
+    <Position X="5.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SMS\RestrictionBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.ServiceBase">
+    <Position X="1.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>SMS\ServiceBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.ServiceProvider">
+    <Position X="1.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SMS\ServiceProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.SMSChannel">
+    <Position X="8" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAggIAAAAAAAAAAAAAAAAEIAAAggAAAAAAAAg=</HashCode>
+      <FileName>SMS\SMSChannel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.SMSChannelLog">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAIIAAAAgAAAAAAAAA=</HashCode>
+      <FileName>SMS\SMSChannelLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.ShortMessageService">
+    <Position X="0.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SMS\SMSService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.Billing.CardPaymentCallbackResult" Collapsed="true">
+    <Position X="13.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAQAAgAAI=</HashCode>
+      <FileName>Billing\CardPaymentCallbackResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.Billing.CardPaymentDataDict" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAA=</HashCode>
+      <FileName>Billing\CardPaymentDataDict.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.Billing.SDKCallbackResult" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAQgEAhQAAgAAIAAAAACAgAAAABAAAAAAAAACgIE=</HashCode>
+      <FileName>Billing\SDKCallbackResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.Payments.CallbackNotification" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAkAAAAAAAAAAQAAAAAAAAAAAAQAAEgAAI=</HashCode>
+      <FileName>Payments\CallbackNotifyDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.Payments.CardPaymentRetry" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAhAQAAAAAAAAgAAAAACDAAgAAhACAAAAAAAIAAI=</HashCode>
+      <FileName>Payments\CardPaymentInfoForRetry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.Payments.CustomerOrder" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAUAAAAAAAAAIAAAACBCQAAABAAgAABAAAIAAI=</HashCode>
+      <FileName>Payments\CustomerOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.Payments.FinancialAccount" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Payments\FinancialAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.Payments.Order" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEAAAAQAAACQAAAAEEAAAiBCAAAAAAAwQAAAAAIAAI=</HashCode>
+      <FileName>Payments\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.Payments.OrderLine" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEIAAAAAREoAAACAAAAkAgACEgCAJAAAgAEkAEIBAI=</HashCode>
+      <FileName>Payments\OrderLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackMamba.Billing.Models.SMS.SMSLog">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAgAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SMS\SMSLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="BlackMamba.Billing.Models.PaymentCardType" Collapsed="true">
+    <Position X="10.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQABAAAQKAAAAAAAIIQAkAAAAAAAAAACAQAAAAAFAAA=</HashCode>
+      <FileName>Billing\CardPayment.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackMamba.Billing.Models.GameBaseChargeStatus" Collapsed="true">
+    <Position X="13.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgCAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SMS\GameBaseChannelLog.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackMamba.Billing.Models.RestrictionType" Collapsed="true">
+    <Position X="7" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SMS\RestrictionBase.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackMamba.Billing.Models.ServiceType">
+    <Position X="2.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>SMS\ServiceBase.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackMamba.Billing.Models.SMSChargeStatus">
+    <Position X="6.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAQAQAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SMS\SMSChannelLog.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackMamba.Billing.Models.Payments.CardPaymentCallBackStatus" Collapsed="true">
+    <Position X="10.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBAKAAAA4gAAAAIgCAgAAAAFAgAABACgISABAAGAA4A=</HashCode>
+      <FileName>Payments\CardPaymentCallBackStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackMamba.Billing.Models.Payments.CardPaymentRequestStatus" Collapsed="true">
+    <Position X="12" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAIAIAAAAAAAAAAgAAAEAAAAAgQAAEAAAAAAQAAIAIA=</HashCode>
+      <FileName>Payments\CardPaymentRequestStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackMamba.Billing.Models.Payments.OrderStatus" Collapsed="true">
+    <Position X="15.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEAAAAAIEgAAAAIQCAAAAAAQBABBAAAAAACA=</HashCode>
+      <FileName>Payments\OrderStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackMamba.Billing.Models.Payments.PaymentStatus" Collapsed="true">
+    <Position X="12" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAACAAAAAAAAAAAAAAAAAAAAAAAAAAICQAAA=</HashCode>
+      <FileName>Payments\PaymentStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackMamba.Billing.Models.Payments.ReissueOrderStatus" Collapsed="true">
+    <Position X="13.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAAAAAAAAEAAAAAAAAAAAAgAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Payments\ReissueOrderStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>

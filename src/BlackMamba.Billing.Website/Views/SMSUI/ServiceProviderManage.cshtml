@@ -1,0 +1,66 @@
+﻿@model  SubSonic.Oracle.Schema.PagedList<BlackMamba.Billing.Models.SMS.ServiceProvider>
+@using BlackMamba.Billing.Website.Web
+@{
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+
+}
+@section functions{
+                   <button class="btn btn-large btn-blue" onclick="window.open('SPAdd','_self');">添加SP</button>
+            }
+
+    <div style="padding: 5px;">
+        @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    SPID
+                </th>
+                <th>
+                    名称
+                </th>
+                <th>
+                    动态SP选项
+                </th>
+                <th>
+                    描述
+                </th>
+                <th>
+                    创建时间
+                </th>
+                 <th width="100px">&nbsp;</th>
+                 <th width="100px">&nbsp;</th>                      
+                 <th width="100px">&nbsp;</th>
+
+            </tr>
+        </thead>
+        <tbody class="prolist">
+            @foreach (var item in Model)
+            {
+                <tr class="odd gradeX">
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.DynamicSP.ToString()</td>
+                    <td>@item.Description</td>
+                    <td>@item.CreatedDate</td>
+
+                                          <td class="center">
+                          <button class="btn btn-large btn-gray" onclick="window.open('SPEdit/@item.Id','_self');">
+                              修 改</button>
+                      </td>
+                      <td class="center">
+                          <button class="btn btn-large btn-gray" onclick="var c=confirm('确定要删除?'); if(c==true){window.open('SPDelete/@item.Id','_self');}">
+                              删 除</button>
+                      </td>
+                      <td class="center"><button type="button" class="btn btn-large btn-blue"  onclick="window.open('SMSServices/@item.Id','_self');">通道管理</button></td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="padding: 5px;">
+        @Html.Pager(Model, new PagerOptions() { PageIndexParameterName = "page" })
+    </div>
+

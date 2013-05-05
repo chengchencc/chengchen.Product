@@ -1,0 +1,4 @@
+BlackMamba.Framework.Core
+SubSonic.Core.Oracle
+SubSonic.Core.Oracle.Test
+BlackMamba.Framework.RedisMapper

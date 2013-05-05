@@ -1,0 +1,68 @@
+﻿@model IEnumerable<BlackMamba.Billing.Models.SMSLog>
+
+@{
+    ViewBag.Title = "短代充值信息详情";
+    Layout = "~/Views/Shared/_SMSUILayout.cshtml";
+}
+@section functions{
+    <button class="btn btn-large btn-blue" onclick="window.open('/SMSUI/SMSChannelLogs','_self');">返回到上一层</button>
+}
+
+<div style="padding: 5px;">
+  
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChannelLogId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direction)
+            </th>
+
+            <th>
+               发送到号码
+            </th>
+            <th>
+                    创建时间
+                </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChannelLogId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsSent)
+                </td>
+                <td>
+                    @(item.Direction.ToString() == "Send" ? "发送" : "接收")
+                </td>
+
+                <td>
+                     @Html.DisplayFor(modelItem => item.TargetPhoneNo)
+                </td>
+
+                <td>
+                    @item.CreatedDate
+                </td>
+   
+            </tr>
+        }
+    </tbody>
+</table>
