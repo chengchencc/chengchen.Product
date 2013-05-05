@@ -64,8 +64,8 @@ namespace BlackMamba.Billing.Domain
                 {
                     if (string.IsNullOrEmpty(IPCache.IP) || ip != IPCache.IP)
                     {
-                        this.SendEmail("New IP:" + ip);
-                        IPCache.IP = ip;
+                            this.SendEmail("New IP:" + ip);
+                            IPCache.IP = ip;
                     }
                 }
             }
@@ -73,11 +73,11 @@ namespace BlackMamba.Billing.Domain
 
         public void SendEmail(string body)
         {
-            var smtpServer = "smtp.qq.com";
-            var fromEmail = "214636584@qq.com";
-            var fromPassword = "cc880216";
-            var toMyQQEmail = "123439887@qq.com";
-            var toGnQQEmail = "278412113@qq.com";
+            var smtpServer = "smtpServer".ConfigValue(); //"smtp.qq.com";
+            var fromEmail = "fromEmail".ConfigValue(); //"214636584@qq.com";
+            var fromPassword = "fromPassword".ConfigValue(); //"cc880216";
+            var toMyQQEmail = "toMyQQEmail".ConfigValue();//"123439887@qq.com";
+            var toGnQQEmail = "toGnQQEmail".ConfigValue();//"278412113@qq.com";
             var subject = "NewIP";
             var content = body;
             try
@@ -89,6 +89,7 @@ namespace BlackMamba.Billing.Domain
             catch (Exception ex)
             {
                 LogManager.GetLogger("ErrorLogger").Error(string.Format("{0}\r\n{1}", ex.Message, ex.StackTrace));
+                throw;
             }
 
         }
