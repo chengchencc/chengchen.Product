@@ -123,10 +123,14 @@
     <Compile Include="Services\BillingCore\CardPaymentProcessor.cs" />
     <Compile Include="Services\BillingCore\CardPaymentRetryJob.cs" />
     <Compile Include="Services\BillingCore\CardPaymentRetryNotifyJob.cs" />
+    <Compile Include="Services\BillingCore\IpProcessor.cs" />
     <Compile Include="Services\BillingCore\ICardPaymentProcessor.cs" />
+    <Compile Include="Services\BillingCore\IIpProcessor.cs" />
     <Compile Include="Services\BillingCore\LogHelper.cs" />
     <Compile Include="Common\BillingConsts.cs" />
     <Compile Include="Interfaces\IYeepayService.cs" />
+    <Compile Include="Services\IMailService.cs" />
+    <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\Billing\PaymentsService.cs" />
     <Compile Include="Services\Billing\PaymentsUIService.cs" />
     <Compile Include="Services\Billing\YeepayFakeService.cs" />

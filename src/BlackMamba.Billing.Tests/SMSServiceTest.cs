@@ -21,7 +21,7 @@ namespace BlackMamba.Billing.Tests
     {
         public SMSService SMSService { get; set; }
         public Mock<IRepository> MockDbContext { get; set; }
-        public Mock<IPaymentsService> MockPaymentsService { get; set; }
+        public Mock<IMailService> MockPaymentsService { get; set; }
         public Mock<IRESTfulClient> MockRESTfulClient { get; set; }
         public Mock<IRedisService> MockRedisService { get; set; }
         const string IMSI_EXAMPLE = "12145785421";
@@ -29,7 +29,7 @@ namespace BlackMamba.Billing.Tests
         public SMSServiceTest()
         {
             MockDbContext = new Mock<IRepository>();
-            MockPaymentsService = new Mock<IPaymentsService>();
+            MockPaymentsService = new Mock<IMailService>();
             MockRESTfulClient = new Mock<IRESTfulClient>();
             MockRedisService = new Mock<IRedisService>();
 

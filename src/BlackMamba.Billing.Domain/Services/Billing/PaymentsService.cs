@@ -23,7 +23,7 @@ using System.Text.RegularExpressions;
 
 namespace BlackMamba.Billing.Domain.Services
 {
-    public class PaymentsService : BlackMamba.Billing.Domain.Services.IPaymentsService
+    public class PaymentsService : BlackMamba.Billing.Domain.Services.IMailService
     {
         const string SEQUENCE_ORDER_COUNT = "SEQ:ORDERCOUNT";
         public IRepository Repository { get; set; }

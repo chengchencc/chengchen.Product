@@ -17,8 +17,8 @@ namespace BlackMamba.Billing.Website.Controllers
     
     public class AlipayController : MvcControllerBase
     {
-        public IPaymentsService PaymentsService { get; set; }
-        public AlipayController(IPaymentsService paymentsService)
+        public IMailService PaymentsService { get; set; }
+        public AlipayController(IMailService paymentsService)
         {
             PaymentsService = paymentsService;
         }

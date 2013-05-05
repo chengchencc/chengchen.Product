@@ -19,8 +19,8 @@ namespace BlackMamba.Billing.Tests
         Mock<IRedisService> _redisServiceMock;
         IRedisService redisService;
 
-        Mock<IPaymentsService> _paymentsServiceMock;
-        IPaymentsService paymentsService;
+        Mock<IMailService> _paymentsServiceMock;
+        IMailService paymentsService;
 
         IRepository mockRepository;
         Mock<IRepository> _repository;
@@ -59,7 +59,7 @@ namespace BlackMamba.Billing.Tests
             _repository = new Mock<IRepository>();
             mockRepository = _repository.Object;
 
-            _paymentsServiceMock = new Mock<IPaymentsService>();
+            _paymentsServiceMock = new Mock<IMailService>();
             paymentsService = _paymentsServiceMock.Object;
 
             _restfulClientMock = new Mock<IRESTfulClient>();

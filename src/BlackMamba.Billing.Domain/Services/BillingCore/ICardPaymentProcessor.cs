@@ -9,7 +9,7 @@ namespace BlackMamba.Billing.Domain
     public interface ICardPaymentProcessor
     {
         SubSonic.Oracle.Repository.IRepository oracleRepo { get; set; }
-        IPaymentsService PaymentsService { get; set; }
+        IMailService PaymentsService { get; set; }
         CardPaymentRequestStatus ProcessCardPaymentRequest(CardPayment cardPayment, int retryCount);
         IRedisService RedisService { get; set; }
         IRESTfulClient RESTfullClient { get; set; }

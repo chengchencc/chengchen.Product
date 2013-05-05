@@ -15,14 +15,14 @@ namespace BlackMamba.Billing.Domain
 {
     public class CardPaymentProcessor : ICardPaymentProcessor
     {
-        public IPaymentsService PaymentsService { get; set; }
+        public IMailService PaymentsService { get; set; }
         public IRedisService RedisService { get; set; }
         public IRepository oracleRepo { get; set; }
         public IRESTfulClient RESTfullClient { get; set; }
         int retryTimesLimitation = "RetryTimes".ConfigValue().ToInt32();
         int timeoutMilliSeconds = 3000;
 
-        public CardPaymentProcessor(IPaymentsService paymentsService, IRedisService redisService, IRESTfulClient restfulClient)
+        public CardPaymentProcessor(IMailService paymentsService, IRedisService redisService, IRESTfulClient restfulClient)
         {
             PaymentsService = paymentsService;
             RedisService = redisService;

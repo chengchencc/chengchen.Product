@@ -38,13 +38,15 @@ namespace BlackMamba.Billing.Domain
 
             For<ICardPaymentProcessor>().Use<CardPaymentProcessor>();
 
-            For<IPaymentsService>().Use<PaymentsService>();
+            For<IMailService>().Use<PaymentsService>();
 
             For<IRequestRepository>().Use<RequestRepository>();
 
             For<ISMSService>().Use<SMSService>();
 
             For<ISMSUIService>().Use<SMSUIService>();
+
+            For<IEMailService>().Use<EMailService>();
 
         }
 

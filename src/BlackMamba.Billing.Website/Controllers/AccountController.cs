@@ -27,7 +27,8 @@ namespace BlackMamba.Billing.Website.Controllers
 
                 if (cookie["USERNAME"] == validUserName && cookie["PASSWORD"] == encryptedPassword)
                 {
-                    return RedirectToAction("OrderManage", "PayCenterUI");
+                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("OrderManage", "PayCenterUI");
                 }
             }
             return View();
@@ -49,7 +50,8 @@ namespace BlackMamba.Billing.Website.Controllers
                 cookie["PASSWORD"] = encryptedPassword;
                 Response.Cookies.Add(cookie);
 
-                return RedirectToAction("OrderManage", "PayCenterUI");
+                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("OrderManage", "PayCenterUI");
             }
             else
             {

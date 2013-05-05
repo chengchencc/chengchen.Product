@@ -15,9 +15,9 @@ namespace BlackMamba.Billing.Website.Controllers
 {
     public class YeepayController : MvcControllerBase
     {
-        public IPaymentsService PaymentsService { get; set; }
+        public IMailService PaymentsService { get; set; }
         //public IOrderService OrderService { get; set; }
-        public YeepayController(IPaymentsService paymentsService)//, IOrderService orderService)
+        public YeepayController(IMailService paymentsService)//, IOrderService orderService)
         {
             PaymentsService = paymentsService;
             // OrderService = orderService;

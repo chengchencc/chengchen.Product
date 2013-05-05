@@ -13,7 +13,7 @@ namespace BlackMamba.Billing.Domain
         {
             try
             {
-                CardPaymentProcessor cardPaymentProcessor = new CardPaymentProcessor(ObjectFactory.GetInstance<IPaymentsService>(), ObjectFactory.GetInstance<IRedisService>(),ObjectFactory.GetInstance<IRESTfulClient>());
+                CardPaymentProcessor cardPaymentProcessor = new CardPaymentProcessor(ObjectFactory.GetInstance<IMailService>(), ObjectFactory.GetInstance<IRedisService>(),ObjectFactory.GetInstance<IRESTfulClient>());
 
                 int retryCount = context.JobDetail.JobDataMap.GetInt("retryCount");
 

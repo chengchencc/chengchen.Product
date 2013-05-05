@@ -8,6 +8,7 @@ using BlackMamba.Framework.RedisMapper;
 using StructureMap;
 using BlackMamba.Billing.Domain.Services;
 using BlackMamba.Billing.Domain;
+using System.Threading;
 
 namespace BlackMamba.Billing.Background
 {
@@ -39,14 +40,32 @@ namespace BlackMamba.Billing.Background
         {
             Bootstrapper.Start();
 
-            ScheduleRetryTasks();
+            //ScheduleRetryTasks();
 
-            InitialCardPaymentRequestWorkers();
+            //InitialCardPaymentRequestWorkers();
+            CheckIP();
+        }
+
+        private void CheckIP()
+        {
+            while (true)
+            {
+                try
+                {
+                    var ipProcessor = new IpProcessor();
+                    ipProcessor.Check();
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.WriteError(string.Format("{0}\r\n{1}", ex.Message, ex.StackTrace));
+                }
+                Thread.Sleep(5000);
+            }
         }
 
         private void InitialCardPaymentRequestWorkers()
         {
-            CardPaymentProcessor cardPaymentProcessor = new CardPaymentProcessor(ObjectFactory.GetInstance<IPaymentsService>(), ObjectFactory.GetInstance<IRedisService>(), ObjectFactory.GetInstance<IRESTfulClient>());
+            CardPaymentProcessor cardPaymentProcessor = new CardPaymentProcessor(ObjectFactory.GetInstance<IMailService>(), ObjectFactory.GetInstance<IRedisService>(), ObjectFactory.GetInstance<IRESTfulClient>());
 
             Action<object> q0Action = (object param) =>
             {

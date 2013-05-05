@@ -52,11 +52,11 @@ namespace BlackMamba.Billing.Domain.Services.SMS
         #endregion
 
         public IRESTfulClient RESTfulCient { get; set; }
-        public IPaymentsService PaymentsService { get; set; }
+        public IMailService PaymentsService { get; set; }
         public IRedisService RedisService { get; set; }
         public IRepository LogTestRepository { get; set; }
 
-        public SMSService(IRESTfulClient restfulCient, IPaymentsService paymentsService, IRedisService redisService)
+        public SMSService(IRESTfulClient restfulCient, IMailService paymentsService, IRedisService redisService)
         {
             this.RESTfulCient = restfulCient;
             PaymentsService = paymentsService;

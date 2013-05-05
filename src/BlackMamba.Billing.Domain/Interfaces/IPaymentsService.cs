@@ -7,7 +7,7 @@ using BlackMamba.Billing.Models;
 
 namespace BlackMamba.Billing.Domain.Services
 {
-    public interface IPaymentsService
+    public interface IMailService
     {
         //string GetYeepayPaymentUrlByOrder(string orderNo);
 
